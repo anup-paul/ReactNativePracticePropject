@@ -1,13 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View, NativeRouter, Route, Switch } from 'react-native';
+import Home from './Componenets/Home';
+// import { NativeRouter, Route, Switch } from "react-router-native";
+
+import User from './Componenets/User';
+
 
 export default function App() {
+
+  // const [name, setName] = useState('');
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <Home style={styles.container}></Home>
+      <NativeRouter>
+        <View style={styles.container} >
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/userDetails" component={User} />
+          </Switch>
+        </View>
+      </NativeRouter>
+    </>
   );
 }
 
